@@ -1,0 +1,86 @@
+<div class="container">
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <h3 class="text-center">Employee Form</h3>
+    <div class="form-group">
+      <label for="name">Name<span class="required">*</span></label>
+      <input
+        id="name"
+        type="text"
+        class="form-control"
+        formControlName="name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="address">
+        Address
+        <span class="required">*</span>
+      </label>
+      <div>
+        <textarea
+          name="address"
+          id="address"
+          cols="30"
+          rows="10"
+          class="form-control"
+          formControlName="address"
+        ></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="dob">Date of birth<span class="required">*</span></label>
+      <input id="dob" type="date" class="form-control" formControlName="dob" />
+    </div>
+    <div class="form-group">
+      <label for="role">Role<span class="required">*</span></label>
+      <select class="form-control" formControlName="role">
+        <option *ngFor="let role of roles" [value]="role" id="role">
+          {{ role }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group" formArrayName="phones">
+      <label for="phones">Phones<span class="required">*</span></label>
+      <div>
+        <div *ngFor="let phone of phones.controls; let i = index" id="phones">
+          <input
+            id="phone-{{ i }}"
+            type="text"
+            class="form-control"
+            [formControlName]="i"
+            [ngClass]="{ 'mt-0_5': i > 0 }"
+          />
+          <button
+            *ngIf="phones.controls.length - 1 === i"
+            (click)="addPhone()"
+            class="ml-0_5"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Gender<span class="required">*</span></label>
+      <div>
+        <input type="radio" id="male" formControlName="gender" value="male" />
+        <label for="male" class="radio-labels">Male</label>
+        <input
+          type="radio"
+          id="female"
+          formControlName="gender"
+          value="female"
+        />
+        <label for="female" class="radio-labels">Female</label>
+        <input type="radio" id="other" formControlName="gender" value="other" />
+        <label for="other" class="radio-labels">Other</label>
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="btn"
+      [disabled]="employeeForm.status !== 'VALID'"
+    >
+      Submit
+    </button>
+  </form>
+</div>

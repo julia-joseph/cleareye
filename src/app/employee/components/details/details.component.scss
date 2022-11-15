@@ -1,0 +1,10 @@
+.details {
+  .detail {
+    border: 1px solid black;
+    margin: 1rem auto;
+
+    div:nth-child(1) {
+      border-bottom: 1px solid black;
+    }
+  }
+}

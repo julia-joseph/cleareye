@@ -1,0 +1,36 @@
+.radio-labels {
+  font-weight: 300;
+  font-size: 0.95rem;
+}
+
+.btn {
+  width: 100%;
+  margin: 0.75rem;
+  background-color: rgb(0, 119, 255, 85%);
+  color: white;
+  border: 1px solid rgb(0, 119, 255);
+  padding: 0.25rem 0.15rem;
+  font-size: 1.05rem;
+  transform: scale(0.97);
+  transition: all linear 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: rgb(188, 188, 188);
+    border: rgb(188, 188, 188);
+    cursor: not-allowed;
+  }
+}
+
+.required {
+  color: red;
+  margin-right: 1rem;
+}
